@@ -9,4 +9,6 @@ function checkLengthStr(string, maxLength) {
 
 }
 
-export {randomNumber, checkLengthStr};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+export {randomNumber, checkLengthStr, isEscapeKey};

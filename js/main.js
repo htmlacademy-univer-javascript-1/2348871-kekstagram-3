@@ -1,8 +1,10 @@
 import { createArrayObjects } from './data.js';
-import { checkLengthStr } from './util.js';
 import '/js/popup.js';
+import './form.js';
+import './validate.js';
+import {drawPictureDiscriptions} from './popup.js';
 
-checkLengthStr('Скоро экзамены', 10);
-createArrayObjects(25);
 
-//Задание 7 часть 2
+const array = createArrayObjects(25);
+drawPictureDiscriptions(array);
+
