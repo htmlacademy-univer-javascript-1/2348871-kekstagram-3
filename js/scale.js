@@ -1,12 +1,14 @@
 const scale = document.querySelector('.scale__control--value');
 const imagePreview = document.querySelector('.img-upload__preview');
+// const decreaseButton = document.querySelector('.scale__control--smaller');
+// const increaseButton= document.querySelector('.scale__control--bigger');
 
-const resizeImage = (newScale) => {
+export const resizeImage = (newScale) => {
   scale.value = `${newScale}%`;
   imagePreview.style.transform = `scale(${newScale/100})`;
 };
 
-const increase = (evt) => {
+export const increase = (evt) => {
   evt.preventDefault();
   let currentScale = parseInt(scale.value, 10);
   if (currentScale <= 75) {
@@ -17,7 +19,7 @@ const increase = (evt) => {
   resizeImage(currentScale);
 };
 
-const decrease = (evt) => {
+export const decrease = (evt) => {
   evt.preventDefault();
   let currentScale = parseInt(scale.value, 10);
   if (currentScale >= 50) {
@@ -28,4 +30,4 @@ const decrease = (evt) => {
   resizeImage(currentScale);
 };
 
-export {increase, decrease};
+
