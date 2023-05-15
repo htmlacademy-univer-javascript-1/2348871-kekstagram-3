@@ -7,7 +7,6 @@ const imageOverlay = imageForm.querySelector('.img-upload__overlay');
 const img = document.querySelector('.img-upload__preview > img');
 const uploadButton = imageForm.querySelector('#upload-file');
 const closeButton = imageForm.querySelector('#upload-cancel');
-
 const decreaseButton = document.querySelector('.scale__control--smaller');
 const increaseButton= document.querySelector('.scale__control--bigger');
 
@@ -23,15 +22,21 @@ function openEditWindow() {
   imageOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
   document.addEventListener('keydown', onPopupEscKeydown);
-  increaseButton.addEventListener('click', increase);
-  decreaseButton.addEventListener('click', decrease);
+  increaseButton.addEventListener('click', (evt) => {
+    increase(evt);
+  });
+  decreaseButton.addEventListener('click', (evt) => {
+    decrease(evt);
+  });
   setupListeners();
 }
 
-function closeEditWindow() {
+export function closeEditWindow() {
   document.body.classList.remove('modal-open');
   imageOverlay.classList.add('hidden');
   document.removeEventListener('keydown', onPopupEscKeydown);
+  img.classList.remove(...img.classList);
+  img.classList.add('effects__preview--none');
   cleanForm();
   removeListeners();
 }
@@ -53,3 +58,6 @@ closeButton.addEventListener('click', (evt) => {
 });
 
 
+const cancelButton = document.querySelector('#upload-cancel');
+
+cancelButton.addEventListener('click', () => closeEditWindow());
